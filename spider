@@ -1,0 +1,86 @@
+
+# coding: utf-8
+
+# In[2]:
+
+import re
+import time
+import datetime
+import requests
+from bs4 import BeautifulSoup
+
+f = open('ibaotu_chahua1-1250.csv','a+')
+f.write('donetime,pic_cat1,pic_cat2,pic_title,pic_sc,pic_dnum,pic_cl,pic_id,pic_mode,pic_picsiz,pic_filesiz,pic_type,pic_tool,pic_uptime,pic_keywords\n')
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+}
+
+list = []
+for n in range(1,1251):#翻页数   1-201
+    url = 'https://ibaotu.com/chahua/12-0-0-0-2-{}.html'.format(n)
+    try:
+        r = requests.get(url,headers = headers)
+        r.encoding = r.apparent_encoding
+        soup = BeautifulSoup(r.text,"html.parser")
+    except:
+        print('解析列表失败',url,"第",n,"页")
+    
+    for x in range(40):#一页采多少个
+        try:
+            picUrls = soup.find_all(class_="hover-pop")[x].find('a').get('seo-url')
+            urls = 'https:'+picUrls
+        except:
+            urls = ''
+        list.append(urls)
+
+for i in list:
+    try:
+        r = requests.get(i,headers = headers)
+        r.encoding = r.apparent_encoding
+        soup = BeautifulSoup(r.text,"html.parser")
+    except:
+        print('解析详情页失败',i,'第',x,'条')
+
+    try:
+        p = soup.find_all(class_="detail-crumbs")[0].get_text()
+    except:
+        print('页面标签找不到',urls)
+
+    donetime = datetime.datetime.now().strftime("%Y.%m.%d-%H:%M:%S")
+
+    pic_cat1 = p.split()[0].split(">")[-1]
+    pic_cat2 = p.split()[2]
+    pic_title = p.split()[-1]
+
+    data = soup.find_all(class_="others-datas")[0].get_text()
+    pic_sc = data.split()[0].split("：")[-1]
+    pic_dnum = data.split()[1].split("：")[-1] 
+    pic_cl = data.split()[2].split("：")[-1] 
+    pic_id = soup.find_all(class_="details-wrap")[0].find_all("li")[0].get_text()[4:]
+    pic_mode = soup.find_all(class_="details-wrap")[0].find_all("li")[1].get_text()[4:]
+    pic_sizetext = soup.find_all(class_="details-wrap")[0].find_all("li")[2].get_text()
+    pic_picsiz = re.findall(r"图片尺寸(.*)像素",pic_sizetext)[0]
+    pic_filesiz = soup.find_all(class_="details-wrap")[0].find_all("li")[3].get_text()[4:]
+
+    pic_type = soup.find_all(class_="file-format")[0].get_text() #线上代码 soup.find_all(class_="file-type")[0].get_text()[4:]
+
+    pic_tool = soup.find_all(class_="recommand-soft")[0].get_text()#线上代码 soup.find_all(class_="details-wrap")[0].find_all("li")[5].get_text()[4:]
+    try:
+        pic_uptime = soup.find_all(class_="upload-time")[0].get_text()#线上代码 soup.find_all(class_="details-wrap")[0].find_all("li")[6].get_text()[4:]
+    except:
+        pic_uptime = '空'
+
+    try:
+        pic_keywords = soup.find_all(class_="related-search clearfix")[0].get_text()
+    except:
+        pic_keywords ='空'
+        
+    try:
+        print(donetime,pic_cat1,pic_cat2,pic_title,pic_sc,pic_dnum,pic_cl,pic_id,pic_mode,pic_picsiz,pic_filesiz,pic_type,pic_tool,pic_uptime,pic_keywords)
+        f.write("{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}\n".format(donetime,pic_cat1,pic_cat2,pic_title,pic_sc,pic_dnum,pic_cl,pic_id,pic_mode,pic_picsiz,pic_filesiz,pic_type,pic_tool,pic_uptime,pic_keywords))
+    except:
+        print('*****************************写入失败*****************************')
+        
+time.sleep(2)
+f.close() 
