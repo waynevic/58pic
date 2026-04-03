@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>移动端 Codex 入门教程（业务同学版）</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="tag">5 章 · 零开发基础 · 手机上手</p>
+      <h1>移动端 Codex 学习演示 Web App</h1>
+      <p class="subtitle">专为业务同学设计：不讲“黑话”，一步步告诉你每个功能到底是什么意思。</p>
+      <a href="#chapters" class="btn">开始学习</a>
+    </div>
+    <div class="hero__art" aria-hidden="true">
+      <svg viewBox="0 0 280 260" role="img">
+        <rect x="70" y="20" width="140" height="220" rx="20" fill="#111827"/>
+        <rect x="82" y="42" width="116" height="176" rx="12" fill="#f3f4f6"/>
+        <circle cx="140" cy="229" r="7" fill="#9ca3af"/>
+        <rect x="95" y="58" width="90" height="10" rx="5" fill="#2563eb"/>
+        <rect x="95" y="74" width="75" height="8" rx="4" fill="#93c5fd"/>
+        <rect x="95" y="90" width="95" height="8" rx="4" fill="#93c5fd"/>
+        <rect x="95" y="112" width="90" height="58" rx="8" fill="#dbeafe"/>
+        <path d="M110 150 L130 130 L146 145 L166 123" stroke="#2563eb" stroke-width="5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </header>
+
+  <main id="chapters" class="container">
+    <nav class="chapter-nav" aria-label="章节导航">
+      <button data-target="c1" class="active">第1章</button>
+      <button data-target="c2">第2章</button>
+      <button data-target="c3">第3章</button>
+      <button data-target="c4">第4章</button>
+      <button data-target="c5">第5章</button>
+    </nav>
+
+    <section id="c1" class="chapter active">
+      <h2>第 1 章：先认识 Codex（它不是“写代码机器”）</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>你可以把 Codex 理解成什么？</h3>
+          <p>把它当作“会技术语言的项目助理”：你说业务目标，它把步骤拆解成可执行任务。</p>
+          <ul>
+            <li>你说：做一个活动页面。</li>
+            <li>Codex 会做：生成页面、改文案、优化按钮样式。</li>
+            <li>你只要看结果、提需求、做决策。</li>
+          </ul>
+        </article>
+        <article class="card illustration">
+          <div class="icon">🧠➡️📱</div>
+          <p>业务想法 → Codex 执行 → 手机上立即预览</p>
+        </article>
+      </div>
+      <details>
+        <summary>业务同学必懂词汇</summary>
+        <p><strong>Prompt（提示词）</strong>：你给 Codex 的需求描述。</p>
+        <p><strong>迭代</strong>：不是推翻重来，而是“在上一个版本继续改”。</p>
+      </details>
+    </section>
+
+    <section id="c2" class="chapter">
+      <h2>第 2 章：手机上怎么用（最简单流程）</h2>
+      <div class="timeline">
+        <div><span>1</span><p>打开移动端 Codex 页面，登录账号。</p></div>
+        <div><span>2</span><p>用一句话说明目标：例如“帮我做一个客户活动介绍页”。</p></div>
+        <div><span>3</span><p>让它先出“草稿版”，先看结构，再改细节。</p></div>
+        <div><span>4</span><p>通过“继续修改”按钮，逐条优化文案、颜色、排版。</p></div>
+      </div>
+      <div class="tip">
+        <strong>手机操作建议：</strong>每次只提一个改动点。比如“只改按钮颜色为品牌蓝”，结果更稳定。
+      </div>
+    </section>
+
+    <section id="c3" class="chapter">
+      <h2>第 3 章：Git、分支到底是啥（业务语言解释）</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Git = 版本账本</h3>
+          <p>可以理解成“项目修改历史记录本”。每一次保存，都记下是谁改了什么、为什么改。</p>
+        </article>
+        <article class="card">
+          <h3>分支 = 试验副本</h3>
+          <p>主分支是正式版本；你新建分支就像“拿一份副本先试改”，不影响正式线上版本。</p>
+        </article>
+      </div>
+      <div class="diagram" aria-label="版本流程图">
+        <div class="node main">主分支（正式版）</div>
+        <div class="arrow">↘</div>
+        <div class="node test">活动页优化分支（试改）</div>
+        <div class="arrow">↗</div>
+        <div class="node merge">合并回主分支（审核通过）</div>
+      </div>
+      <p class="tip"><strong>你不用背命令。</strong>你只要知道：分支是“安全试错空间”，合并是“审核后上线”。</p>
+    </section>
+
+    <section id="c4" class="chapter">
+      <h2>第 4 章：每个常见功能代表什么（超白话）</h2>
+      <table>
+        <thead>
+          <tr><th>功能按钮</th><th>你可以理解为</th><th>你该怎么用</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>New chat</td><td>新开一个需求会话</td><td>做新项目时再点，避免把旧需求混在一起。</td></tr>
+          <tr><td>Edit / Modify</td><td>继续打磨当前版本</td><td>一条一条提改动，别一次塞 10 个要求。</td></tr>
+          <tr><td>Preview</td><td>手机实时看效果</td><td>先看是否“能用”，再看是否“好看”。</td></tr>
+          <tr><td>Commit</td><td>把改动存档</td><td>每完成一个小目标就存档，方便回退。</td></tr>
+          <tr><td>PR (Pull Request)</td><td>“申请审核后上线”</td><td>发给技术同学或负责人确认，再合并发布。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="c5" class="chapter">
+      <h2>第 5 章：你今天就能上手的实战模板</h2>
+      <article class="card">
+        <h3>直接复制这段需求给 Codex：</h3>
+        <pre id="promptTemplate">请帮我生成一个手机优先的活动介绍网页：
+1）顶部要有活动标题+副标题；
+2）中间有 3 个卖点卡片（图标+标题+一句话）；
+3）底部有报名按钮；
+4）整体配色使用蓝白，风格简洁；
+5）所有文字我后续会修改，请先给占位文案。</pre>
+        <button id="copyBtn" class="btn small">复制模板</button>
+      </article>
+      <p class="tip">下一步建议：先让 Codex 生成 v1，再说“只改第2个卡片内容”，循序渐进。</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>给业务同学的话：你不需要成为程序员，只需要会描述目标、会判断结果。</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
