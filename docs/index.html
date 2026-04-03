@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>微信文章研究报告（网页PPT）</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a33;
+      --text: #e8ecff;
+      --muted: #9aa6d1;
+      --accent: #6ea8fe;
+      --ok: #4dd4ac;
+      --warn: #f6bd60;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(1000px 500px at 20% -10%, #203060 0, var(--bg) 70%);
+      color: var(--text);
+    }
+    .deck { width: min(1100px, 94vw); margin: 28px auto 40px; }
+    .toolbar {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px; color: var(--muted); font-size: 14px;
+    }
+    .btns button {
+      border: 1px solid #2d3d73; background: #17224a; color: var(--text);
+      border-radius: 10px; padding: 8px 12px; cursor: pointer;
+    }
+    .slide {
+      display: none; min-height: 70vh; padding: 34px 42px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+      border: 1px solid #2a3766; border-radius: 18px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.32);
+    }
+    .slide.active { display: block; }
+    h1, h2 { margin: 0 0 14px; line-height: 1.25; }
+    h1 { font-size: 40px; }
+    h2 { font-size: 30px; }
+    p, li { font-size: 20px; line-height: 1.62; }
+    ul { margin-top: 6px; }
+    .meta { color: var(--muted); font-size: 16px; }
+    .tag {
+      display: inline-block; margin-right: 8px; padding: 4px 10px;
+      border-radius: 999px; background: #1b2a55; color: #c8d5ff; font-size: 14px;
+    }
+    .box {
+      margin: 14px 0; padding: 14px 16px; border: 1px dashed #3a4b86;
+      border-radius: 12px; background: rgba(20,30,60,.6);
+    }
+    .ok { color: var(--ok); }
+    .warn { color: var(--warn); }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <div class="toolbar">
+      <div>方向键 ← → 或按钮切换页面 · 第 <span id="cur">1</span>/<span id="total">1</span> 页</div>
+      <div class="btns">
+        <button id="prev">上一页</button>
+        <button id="next">下一页</button>
+      </div>
+    </div>
+
+    <section class="slide active">
+      <span class="tag">网页PPT</span><span class="tag">研究报告</span>
+      <h1>微信文章研究报告（待补齐原文）</h1>
+      <p class="meta">目标链接：<a href="https://mp.weixin.qq.com/s/ibyNIB_DENKZC01gDt55tA">https://mp.weixin.qq.com/s/ibyNIB_DENKZC01gDt55tA</a></p>
+      <div class="box">
+        <p><strong>执行时间：</strong>2026-04-03（UTC）</p>
+        <p><strong>结论摘要：</strong>当前环境无法直接抓取微信文章正文（网络侧返回 403），因此先交付 <strong>可发布到 GitHub Pages 的网页PPT框架</strong>，并附上完整研究方法、分析模板与后续补齐机制。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>1. 数据获取状态</h2>
+      <ul>
+        <li>尝试使用 <code>curl -L</code> 直接抓取文章页面，返回 <strong class="warn">CONNECT tunnel failed, response 403</strong>。</li>
+        <li>尝试通过搜索引擎反查该短链 ID，未获得可替代的公开转载正文。</li>
+        <li>因此当前版本采用“<strong>先上线展示框架 + 后续补齐正文内容</strong>”策略，确保你可以先拿到可访问链接。</li>
+      </ul>
+      <p class="meta">建议：你把文章全文贴给我（或提供可直连的镜像链接），我可以在同一份 PPT 中二次提交完整研究版。</p>
+    </section>
+
+    <section class="slide">
+      <h2>2. 深度研究框架（已就位）</h2>
+      <ul>
+        <li><strong>结构拆解：</strong>主题、观点链路、论据来源、叙事节奏、受众定位。</li>
+        <li><strong>可信度评估：</strong>事实核查、数据口径、案例可复现性、潜在偏见。</li>
+        <li><strong>价值提炼：</strong>可执行建议、适用边界、风险清单。</li>
+        <li><strong>传播分析：</strong>标题策略、开头抓力、图文密度、转化路径设计。</li>
+      </ul>
+      <div class="box">
+        <p>补齐正文后，可在 1 次迭代内输出：<strong>逐段批注版 + 管理层摘要版 + 行动路线图版</strong> 三套内容。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>3. 交付物（当前）</h2>
+      <ul>
+        <li class="ok">已创建可直接部署的静态网页 PPT（本文件）。</li>
+        <li class="ok">已适配键盘翻页与页码显示，方便演示和录屏。</li>
+        <li class="ok">已按 GitHub Pages 目录约定放置在 <code>docs/</code> 目录。</li>
+      </ul>
+      <div class="box">
+        <p><strong>你将获得：</strong>仓库启用 Pages 后的在线访问链接（形如 <code>https://&lt;用户名&gt;.github.io/&lt;仓库名&gt;/</code>）。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>4. 下一步（你只需做 1 件事）</h2>
+      <ol>
+        <li>把该微信文章全文粘贴给我（或上传文本文件）。</li>
+      </ol>
+      <p>我将基于同一份网页PPT做“完整研究增强版”，包括：</p>
+      <ul>
+        <li>核心观点树（主张-证据-反证）</li>
+        <li>逐段精读与可疑点核验</li>
+        <li>可执行策略（短期/中期/长期）</li>
+        <li>一页式结论卡（适合老板快速决策）</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>附录：部署说明（GitHub Pages）</h2>
+      <ol>
+        <li>将本仓库推送到你的 GitHub 远程仓库。</li>
+        <li>在仓库 Settings → Pages 中选择：<code>Deploy from a branch</code>。</li>
+        <li>分支选择：<code>work</code>（或默认分支）/ 文件夹：<code>/docs</code>。</li>
+        <li>保存后等待 1~3 分钟，访问生成链接。</li>
+      </ol>
+      <p class="meta">如果你给我远程仓库地址和权限，我可以继续自动化到可直接访问的最终链接。</p>
+    </section>
+  </main>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const total = document.getElementById('total');
+    const cur = document.getElementById('cur');
+    let idx = 0;
+    total.textContent = slides.length;
+
+    function render() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+      cur.textContent = idx + 1;
+    }
+
+    function next() { idx = (idx + 1) % slides.length; render(); }
+    function prev() { idx = (idx - 1 + slides.length) % slides.length; render(); }
+
+    document.getElementById('next').addEventListener('click', next);
+    document.getElementById('prev').addEventListener('click', prev);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') next();
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') prev();
+    });
+  </script>
+</body>
+</html>
